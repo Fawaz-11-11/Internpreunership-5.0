@@ -121,8 +121,10 @@ export default function App() {
         className={`min-h-screen p-6 font-sans transition-all duration-700 ease-in-out ${
 
         darkMode
-          ?"bg-gradient-to-br from-indigo-900 via-blue-900 to-black text-white"
-          : "bg-gradient-to-br from-blue-100 via-cyan-100 to-emerald-100 text-gray-900"
+          ? "bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white"
+
+          : "bg-gradient-to-br from-[#ffe9e3] via-[#ffd9ec] to-[#e0f7fa]"
+
       }`}
     >
       <div className="flex justify-between items-center mb-6">
@@ -208,7 +210,7 @@ export default function App() {
           <label className="block mb-1 font-semibold text-gray-700">Mood Emoji</label>
           <div className="flex gap-2 mb-4 text-xl">
             {["📝", "😃", "😢", "🤔", "🔥", "💡"].map((e) => (
-              <button key={e} onClick={() => setEmoji(e)}>
+              <button key={e} onClick={() => setEmoji(e)} className={`transition transform hover:scale-125 text-2xl ${emoji === e ? "ring-2 ring-orange-500 rounded-full" : ""}`}>
                 {e}
               </button>
             ))}
@@ -231,7 +233,7 @@ export default function App() {
           </p>
 
           <button
-            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded transition"
+            className="bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-400/40 text-white px-4 py-2 rounded transition"
             onClick={handleSave}
           >
             {editIndex !== null ? "Update Note" : "Add Note"}
@@ -258,7 +260,7 @@ export default function App() {
             return (
               <div
                 key={index}
-                className={`p-4 rounded-xl shadow-lg w-72 border border-orange-300 backdrop-blur transition transform duration-300 ${note.color}`}
+               className={`w-72 p-4 rounded-2xl shadow-xl border border-white/20 backdrop-blur-md bg-white/10 hover:scale-105 transition-transform duration-300 ${note.color}`}
               >
                 <h3 className="font-bold text-lg text-orange-800 mb-2">
                   {note.emoji} {note.title}
